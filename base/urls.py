@@ -4,9 +4,7 @@ from .views import RegisterPage, TaskDelete, TaskDetail, TaskList,TaskCreate,Tas
 from django.contrib.auth.views import LogoutView
 
 
-from django.views.static import serve
-from django.conf.urls import url
-from django.conf.urls.static import static
+
 
 urlpatterns = [
     
@@ -19,7 +17,5 @@ urlpatterns = [
     path('task-create', TaskCreate.as_view(), name='task-create'),  
     path('task-update/<int:pk>/', TaskUpate.as_view(), name='task-update'),  
     path('task-delete/<int:pk>/', TaskDelete.as_view(), name='task-delete'),
-    url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
-    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ]
-urlpatterns=urlpatterns+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
